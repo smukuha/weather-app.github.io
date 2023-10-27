@@ -39,11 +39,11 @@ function parseCurrentWeather({ current, daily}){
 
     } = daily
     return{
-        currentTemp: Math.round(currentTemp),
-        highTemp: Math.round(maxTemp),
-        lowTemp: Math.round(minTemp),
-        highFeelsLike: Math.round(maxFeelsLike),
-        lowFeelsLike: Math.round(minFeelsLike),
+        currentTemp: Math.round((currentTemp - 32) * 5/9),
+        highTemp: Math.round((maxTemp - 32) * 5/9),
+        lowTemp: Math.round((minTemp - 32) * 5/9),
+        highFeelsLike: Math.round((maxFeelsLike - 32) * 5/9),
+        lowFeelsLike: Math.round((minFeelsLike- 32) * 5/9),
         windSpeed: Math.round(windSpeed),
         precip: Math.round(precip*100)/100,
         iconCode,
@@ -55,7 +55,7 @@ function parseDailyWeather( {daily}){
         return{
             timestamp: time * 1000,
             iconCode: daily.weathercode[index],
-            maxTemp: Math.round(daily.temperature_2m_max[index])
+            maxTemp: Math.round(((daily.temperature_2m_max[index])- 32) * 5/9)
         }
     })
 }
@@ -65,8 +65,8 @@ function parseHourlyWeather({hourly, current}) {
         return {
             timestamp: time *1000,
             iconCode: hourly.weathercode[index],
-            temp: Math.round(hourly.temperature_2m[index]),
-            feelsLike: Math.round(hourly.apparent_temperature[index]),
+            temp: Math.round((((hourly.temperature_2m[index]))- 32) * 5/9),
+            feelsLike: Math.round((((hourly.apparent_temperature[index]))- 32) * 5/9),
             windSpeed: Math.round(hourly.windspeed_10m[index]),
             precip: Math.round(hourly.precipitation[index]*100)/100,
         }
