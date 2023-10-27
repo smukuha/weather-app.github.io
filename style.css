@@ -19,7 +19,14 @@ body{
   display: flex;
   align-items: center;
 }
-
+.header-message{
+  margin-left: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.6rem;
+  color: hsl(200, 100%, 20%);
+  
+}
 .header-left{
   display: flex;
   width: 50%;
@@ -106,6 +113,7 @@ body{
 
 .hour-row{
   background-color: hsl(200,  60%, 75%);
+  /* background: linear-gradient(135deg, #00feba,#5b548a); */
 }
 
 .hour-row:nth-child(2n){
