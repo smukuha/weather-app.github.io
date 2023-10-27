@@ -89,7 +89,7 @@ function renderDailyWeather(daily){
 
 }
 
-const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, {hour: "numeric"})
+const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, {hour: "numeric", hour12: true})
 const hourlySection = document.querySelector("[data-hour-section]")
 const hourRowTemplate = document.getElementById("hour-row-template")
 
@@ -103,7 +103,7 @@ function renderHourlyWeather(hourly){
     setValue("wind", hour.windSpeed, {parent: element})
     setValue("precip", hour.precip, {parent: element})
     setValue("day", DAY_FORMATTER.format(hour.timestamp),{ parent:element})
-    setValue("time", DAY_FORMATTER.format(hour.timestamp),{ parent:element})
+    setValue("time", HOUR_FORMATTER.format(hour.timestamp),{ parent:element})
     element.querySelector("[data-icon]").src = getIconUrl(hour.iconCode)
     hourlySection.append(element)
   })
